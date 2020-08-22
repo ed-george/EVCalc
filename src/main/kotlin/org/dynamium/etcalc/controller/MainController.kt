@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class MainController {
+private class MainController {
     @GetMapping("/")
     private fun homePageView(): DefaultResponse {
         return DefaultResponse(
