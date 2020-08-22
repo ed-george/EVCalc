@@ -17,9 +17,8 @@ private class MainController {
         )
     }
 
-    @GetMapping("/calculate/mileage/{deviceType}")
-    private fun calculateMileageView(
-            @PathVariable deviceType: String,
+    @GetMapping("/calculate/mileage/euc")
+    private fun calculateMileageEUCView(
             @RequestParam(value = "riderWeight") riderWeight: Int,
             @RequestParam(value = "airTemperature", required = false, defaultValue = "") airTemperature: Int,
             @RequestParam(value = "chargeCycles") chargeCycles: Int,
@@ -27,19 +26,23 @@ private class MainController {
             @RequestParam(value = "batterySize") batterySize: Int,
             @RequestParam(value = "speedType") speedType: String
     ): Int {
-        var result = 0
-        if (deviceType == "euc") {
-            result = CalculateMileage.calculateEUC(riderWeight, airTemperature, chargeCycles, batterySize, speedType)
-        } else {
-
-        }
-        return result
+        return CalculateMileage.calculateEUC(riderWeight, airTemperature, chargeCycles, batterySize, currentPercentage, speedType)
     }
 
-    @GetMapping("/calculate/batteryDrain/{deviceType}")
-    private fun calculateBatteryDrainView(
-            @PathVariable deviceType: String
+    @GetMapping("/calculate/mileage/es")
+    private fun calculateMileageESView(
+            @RequestParam(value = "riderWeight") riderWeight: Int,
+            @RequestParam(value = "airTemperature", required = false, defaultValue = "") airTemperature: Int,
+            @RequestParam(value = "chargeCycles") chargeCycles: Int,
+            @RequestParam(value = "currentPercentage", required = false, defaultValue = "100") currentPercentage: Int,
+            @RequestParam(value = "batterySize") batterySize: Int,
+            @RequestParam(value = "speedType") speedType: String
     ) {
+
+    }
+
+    @GetMapping("/calculate/batteryDrain/euc")
+    private fun calculateBatteryDrainView() {
 
     }
 }
