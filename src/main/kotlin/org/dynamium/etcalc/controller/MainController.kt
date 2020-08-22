@@ -1,6 +1,6 @@
 package org.dynamium.etcalc.controller
 
-import org.dynamium.etcalc.core.CalculateMileage
+import org.dynamium.etcalc.core.calculate.CalculateMileage
 import org.dynamium.etcalc.dataclasses.DefaultResponse
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -20,21 +20,26 @@ private class MainController {
     @GetMapping("/calculate/mileage/{deviceType}")
     private fun calculateMileageView(
             @PathVariable deviceType: String,
-            @RequestParam("riderWeight") riderWeight: Int,
-            @RequestParam("airTemperature") airTemperature: Int,
-            @RequestParam("chargeCycles") chargeCycles: Int,
-            @RequestParam("batterySize") batterySize: Int,
-            @RequestParam("speedType") speedType: String
+            @RequestParam(value = "riderWeight") riderWeight: Int,
+            @RequestParam(value = "airTemperature", required = false, defaultValue = "") airTemperature: Int,
+            @RequestParam(value = "chargeCycles") chargeCycles: Int,
+            @RequestParam(value = "currentPercentage", required = false, defaultValue = "100") currentPercentage: Int,
+            @RequestParam(value = "batterySize") batterySize: Int,
+            @RequestParam(value = "speedType") speedType: String
     ): Int {
         var result = 0
         if (deviceType == "euc") {
             result = CalculateMileage.calculateEUC(riderWeight, airTemperature, chargeCycles, batterySize, speedType)
+        } else {
+
         }
         return result
     }
 
-    @GetMapping("/calculate/batteryDrain/{device}")
-    private fun calculateBatteryDrainView(@PathVariable device: String) {
+    @GetMapping("/calculate/batteryDrain/{deviceType}")
+    private fun calculateBatteryDrainView(
+            @PathVariable deviceType: String
+    ) {
 
     }
 }

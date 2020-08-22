@@ -1,4 +1,4 @@
-package org.dynamium.etcalc.core
+package org.dynamium.etcalc.core.calculate
 
 object CalculateMileage {
     fun calculateEUC(riderWeight: Int, airTemperature: Int, chargeCycles: Int, batterySize: Int, speedType: String): Int {
