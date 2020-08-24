@@ -42,7 +42,12 @@ private class MainController {
     }
 
     @GetMapping("/calculate/batteryDrain/euc")
-    private fun calculateBatteryDrainView() {
+    private fun calculateBatteryDrainEUCView() {
+
+    }
+
+    @GetMapping("/calculate/batteryDrain/es")
+    private fun calculateBatteryDrainESView() {
 
     }
 }
