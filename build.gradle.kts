@@ -7,9 +7,6 @@ plugins {
     kotlin("plugin.spring") version "1.3.72"
 }
 
-apply(plugin = "java")
-apply(plugin = "kotlin")
-
 group = "org.dynamium"
 version = "1.0-alpha1"
 java.sourceCompatibility = JavaVersion.VERSION_11
