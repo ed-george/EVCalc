@@ -17,7 +17,7 @@ private class MainController {
         )
     }
 
-    @GetMapping("/calculate/mileage/euc")
+    @GetMapping("/mileage/euc")
     private fun calculateMileageEUCView(
             @RequestParam(value = "riderWeight") riderWeight: Int,
             @RequestParam(value = "airTemperature", required = false, defaultValue = "") airTemperature: Int,
@@ -29,7 +29,7 @@ private class MainController {
         return CalculateMileage.calculateEUC(riderWeight, airTemperature, chargeCycles, batterySize, currentPercentage, speedType)
     }
 
-    @GetMapping("/calculate/mileage/es")
+    @GetMapping("/mileage/es")
     private fun calculateMileageESView(
             @RequestParam(value = "riderWeight") riderWeight: Int,
             @RequestParam(value = "airTemperature", required = false, defaultValue = "") airTemperature: Int,
@@ -41,12 +41,12 @@ private class MainController {
 
     }
 
-    @GetMapping("/calculate/batteryDrain/euc")
+    @GetMapping("/batteryDrain/euc")
     private fun calculateBatteryDrainEUCView() {
 
     }
 
-    @GetMapping("/calculate/batteryDrain/es")
+    @GetMapping("/batteryDrain/es")
     private fun calculateBatteryDrainESView() {
 
     }

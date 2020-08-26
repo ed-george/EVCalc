@@ -7,8 +7,11 @@ plugins {
     kotlin("plugin.spring") version "1.3.72"
 }
 
+apply(plugin = "java")
+apply(plugin = "kotlin")
+
 group = "org.dynamium"
-version = "0.0.1-SNAPSHOT"
+version = "1.0-alpha1"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -24,6 +27,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+}
+
+sourceSets.main {
+    java.srcDirs("src/main/java", "src/main/kotlin")
 }
 
 tasks.withType<Test> {
