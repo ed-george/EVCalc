@@ -20,19 +20,17 @@ private class MainController {
     @GetMapping("/mileage/euc")
     private fun calculateMileageEUCView(
             @RequestParam(value = "riderWeight") riderWeight: Int,
-            @RequestParam(value = "airTemperature", required = false, defaultValue = "") airTemperature: Int,
             @RequestParam(value = "chargeCycles") chargeCycles: Int,
             @RequestParam(value = "currentPercentage", required = false, defaultValue = "100") currentPercentage: Int,
             @RequestParam(value = "batterySize") batterySize: Int,
             @RequestParam(value = "speedType") speedType: String
     ): Int {
-        return CalculateMileage.calculateEUC(riderWeight, airTemperature, chargeCycles, batterySize, currentPercentage, speedType)
+        return CalculateMileage.calculateEUC(riderWeight, chargeCycles, batterySize, currentPercentage, speedType)
     }
 
     @GetMapping("/mileage/es")
     private fun calculateMileageESView(
             @RequestParam(value = "riderWeight") riderWeight: Int,
-            @RequestParam(value = "airTemperature", required = false, defaultValue = "") airTemperature: Int,
             @RequestParam(value = "chargeCycles") chargeCycles: Int,
             @RequestParam(value = "currentPercentage", required = false, defaultValue = "100") currentPercentage: Int,
             @RequestParam(value = "batterySize") batterySize: Int,
