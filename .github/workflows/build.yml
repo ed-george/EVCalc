@@ -1,0 +1,12 @@
+name: Build Test
+
+on:
+  pull_request:
+    braches: [ master ]
+
+jobs:
+  test_pull_request_ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./gradlew clean build
