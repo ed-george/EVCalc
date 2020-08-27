@@ -3,8 +3,8 @@ name: Kotlin CI
 on: [push, pull_request]
 
 jobs:
-  test_pull_request_ubuntu:
-    name: Test on latest Ubuntu
+  test_ubuntu:
+    name: Test build on latest Ubuntu
     runs-on: ubuntu-latest
 
     steps:
@@ -15,8 +15,8 @@ jobs:
           java-version: 1.11
       - name: Build with Gradle
         run: ./gradlew clean build
-  test_pull_request_windows:
-    name: Test on latest Windows
+  test_windows:
+    name: Test build on latest Windows
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,8 +26,8 @@ jobs:
           java-version: 1.11
       - name: Build with Gradle
         run: ./gradlew clean build
-  test_pull_request_macos:
-    name: Test on latest macOS
+  test_macos:
+    name: Test build on latest macOS
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
