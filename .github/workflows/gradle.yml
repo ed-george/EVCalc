@@ -15,6 +15,11 @@ jobs:
           java-version: 1.11
       - name: Build with Gradle
         run: ./gradlew clean build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: etcalc-app-artifact
+          path: build/libs
   test_windows:
     name: Test build on latest Windows
     runs-on: windows-latest
@@ -26,6 +31,11 @@ jobs:
           java-version: 1.11
       - name: Build with Gradle
         run: ./gradlew clean build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: etcalc-app-artifact
+          path: build/libs
   test_macos:
     name: Test build on latest macOS
     runs-on: macos-latest
@@ -37,4 +47,9 @@ jobs:
           java-version: 1.11
       - name: Build with Gradle
         run: ./gradlew clean build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: etcalc-app-artifact
+          path: build/libs
 

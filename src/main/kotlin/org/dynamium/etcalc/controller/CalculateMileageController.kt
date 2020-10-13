@@ -21,7 +21,7 @@ class CalculateMileageController {
             @RequestParam(value = "speedType") speedType: String
     ): Int {
         val result = CalculateMileage.calculateEUC(riderWeight, chargeCycles, batterySize, currentPercentage, speedType)
-        logger.info("Called /mileage/euc endpoint with arguments riderWeight: $riderWeight, " +
+        logger.debug("Called /mileage/euc endpoint with arguments riderWeight: $riderWeight, " +
                 "chargeCycles: $chargeCycles, currentPercentage: $currentPercentage, batterySize: $batterySize, speedTYpe: $speedType. " +
                 "Returned value: $result")
         return result

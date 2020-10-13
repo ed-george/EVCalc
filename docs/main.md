@@ -1,2 +1,0 @@
-# ETCalc calculator backend
-
