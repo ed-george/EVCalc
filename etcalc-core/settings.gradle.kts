@@ -1,0 +1,3 @@
+
+rootProject.name = "etcalc-core"
+
