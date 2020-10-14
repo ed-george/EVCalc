@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ETCalc 1.0\n"
+"POT-Creation-Date: 2020-10-09 10:07+0300\n"
+"PO-Revision-Date: 2020-10-09 20:24+0300\n"
+"Last-Translator: \n"
+"Language-Team: Dynamium Translation Team\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: etcalc.php\n"
+"X-Poedit-SearchPath-1: woocommerce.php\n"
+"X-Poedit-SearchPath-2: .\n"
+
+#: admin/etcalc-options.php:11
+msgid "ETCalc Settings"
+msgstr "Настройки ETCalc"
+
+#: admin/etcalc-options.php:20
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: admin/etcalc-options.php:34
+msgid "Main settings"
+msgstr "Главные настройки"
+
+#: admin/etcalc-options.php:40
+msgid "Write here your API key, obtained from Dynamium Admin."
+msgstr "Впишите сюда ваш ключ API, взятый с Dynamium Admin."
+
+#: admin/etcalc-options.php:43
+msgid "API Key"
+msgstr "API ключ"
+
+#: etcalc.php:96
+msgid "What you want to calculate?"
+msgstr "Что вы хотите подсчитать?"
+
+#: etcalc.php:101
+msgid "Mileage"
+msgstr "Пробег"
+
+#: etcalc.php:106
+msgid "Battery consumption rate"
+msgstr "Расход батареи"
+
+#: etcalc.php:111
+msgid ""
+"Attention! This calculator calculates values that are much closer to "
+"reality, in contrast to those indicated by the manufacturer. However, it is "
+"not 100 percent, it calculates only approximate values."
+msgstr ""
+"Внимание! Данный калькулятор считает значение, которые намного более "
+"приближены к реальности. Однако он не 100 процентный, он считает лишь "
+"приблизительные значения."
+
+#~ msgid "Что ви хотите подсчитать?"
+#~ msgstr "Что ви хотите подсчитать?"
+
+#~ msgid "Пробег"
+#~ msgstr "Пробег"
+
+#~ msgid "Расход"
+#~ msgstr "Расход"
+
+#~ msgid "Calculate!"
+#~ msgstr "Подсчитать!"
+
+#~ msgid "Clear"
+#~ msgstr "Очистить"

@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ETCalc 1.0\n"
+"POT-Creation-Date: 2020-10-08 11:45+0300\n"
+"PO-Revision-Date: 2020-10-08 11:45+0300\n"
+"Last-Translator: \n"
+"Language-Team: Dynamium Translation Team\n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/etcalc-options.php:11
+msgid "ETCalc Settings"
+msgstr "Налаштування ETCalc"
+
+#: admin/etcalc-options.php:20
+msgid "Save changes"
+msgstr "Зберегти зміни"
+
+#: admin/etcalc-options.php:34
+msgid "Main settings"
+msgstr "Головні налаштування"
+
+#: admin/etcalc-options.php:40
+msgid "Write here your API key, obtained from Dynamium Admin."
+msgstr "Впишіть сюди ваш ключ API, взятий з Dynamium Admin."
+
+#: admin/etcalc-options.php:43
+msgid "API Key"
+msgstr "Ключ API"
+
+#: etcalc.php:59
+msgid "Calculate!"
+msgstr "Підрахувати!"
+
+#: etcalc.php:63
+msgid "Clear"
+msgstr "Очистити"
