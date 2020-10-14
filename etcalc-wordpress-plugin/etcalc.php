@@ -16,7 +16,7 @@
  * Network:     true
  */
 
-include 'admin/etcalc-options.php' // Подключаем файл с интерфейсом настроек
+include 'admin/etcalc-options.php'; // Подключаем файл с интерфейсом настроек
 
 // Создание самой страницы настроек в настройках WordPress
 add_action('admin_menu', 'etcalcOptions');
