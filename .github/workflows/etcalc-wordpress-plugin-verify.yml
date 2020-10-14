@@ -9,8 +9,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Verify
-        uses: overtrue/phplint@master
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          path: /etcalc-wordpress-plugin
-          options: --exclude=*.log
+          php-version: '7.4'
+          tools: pecl
+          extensions: swoole
+      - name: Verify
+        uses: StephaneBour/actions-php-lint@7.4
+        with:
+          dir: './/etcalc-wordpress-plugin'
