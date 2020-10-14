@@ -1,0 +1,16 @@
+name: ETCalc WordPress CI
+
+on: [push, pull_request]
+
+jobs:
+  verify_ubuntu:
+    name: Verify syntax on latest Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Verify
+        uses: overtrue/phplint@master
+        with:
+          path: /etcalc-wordpress-plugin
+          options: --exclude=*.log
