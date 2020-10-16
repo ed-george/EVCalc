@@ -1,6 +1,6 @@
-name: ETCalc Web Server Publish CI
+name: ETCalc Web Server Publish CD
 
-on: [release]
+on: release
 
 jobs:
   publish-release:
