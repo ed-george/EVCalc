@@ -1,0 +1,28 @@
+name: ETCalc Web Server Publish CI
+
+on: [push, pull_request]
+
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@1
+        with:
+          java-version: 11
+
+      - name: Publish artifact
+        env:
+          EVCALC_GHP_USERNAME: ${{ secrets.EVCALC_GHP_USERNAME }}
+          EVCALC_GHP_TOKEN: ${{ secrets.EVCALC_GHP_TOKEN }}
+
+        run: |
+          NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
+          echo "New version: ${NEW_VERSION}"
+          echo "Github username: ${GITHUB_ACTOR}"
+          ./gradlew -Pversion=${NEW_VERSION} publish
+
