@@ -1,6 +1,6 @@
 name: ETCalc Web Server Publish CI
 
-on: [push, pull_request]
+on: [release]
 
 jobs:
   publish-release:
@@ -24,5 +24,6 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
+          cd evcalc-core
           ./gradlew -Pversion=${NEW_VERSION} publish
 
