@@ -1,4 +1,4 @@
-name: ETCalc Web Server Publish CD
+name: EVCalc Web Server GitHub Packages CD
 
 on: release
 
