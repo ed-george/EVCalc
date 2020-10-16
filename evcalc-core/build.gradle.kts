@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.4.10"
+    id("maven-publish")
 }
 group = "org.dynamium.etcalc"
 version = "1.0-SNAPSHOT"
