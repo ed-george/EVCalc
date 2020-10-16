@@ -1,3 +1,3 @@
 
-rootProject.name = "etcalc-core"
+rootProject.name = "core"
 
