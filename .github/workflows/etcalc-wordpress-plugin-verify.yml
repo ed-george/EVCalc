@@ -18,4 +18,4 @@ jobs:
       - name: Verify
         uses: StephaneBour/actions-php-lint@7.4
         with:
-          dir: './/etcalc-wordpress-plugin'
+          dir: './evcalc-wordpress-plugin'
