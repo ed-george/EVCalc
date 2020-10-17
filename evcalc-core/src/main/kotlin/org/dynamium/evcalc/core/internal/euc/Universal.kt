@@ -19,18 +19,20 @@ private const val startSpeed = 35
 private const val startMileage = 88
 
 // Multipliers
-private const val riderWeightOffsetMultiplier = 2
-private const val batteryCapacityOffsetMultiplier = 15
-private const val airTempOffsetMultiplier = 1
-private const val batteryCyclesOffsetMultiplier = 2
+private const val riderWeightOffset = 2
+private const val batteryCapacityOffset = 15
+private const val airTempOffset = 1
+private const val batteryCyclesOffset = 2
 
 internal object Universal {
     fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
+        var calculatedValue = startMileage
         val riderWeightOffset = calculateOffsets("riderWeight", riderWeight)
-        val batteryCapacityOffset = calculateOffsets("batteryCapacity", batteryCapacity)
         val airTempOffset = calculateOffsets("airTemp", airTemp)
 
-
+        if (batteryCapacity < startBatteryCapacity) { // Applying battery capacity offset
+            calculatedValue - calculateOffsets("batteryCapacity", batteryCapacity)
+        }
         return 1
     }
 
@@ -45,7 +47,7 @@ internal object Universal {
                     }
                     rawValue > startRiderWeight -> {
                         val offset = rawValue - startAirTemperatureEnd // Get the offset by subtracting
-                        offset * airTempOffsetMultiplier // Apply our data to returned value
+                        offset * airTempOffset // Apply our data to returned value
                     }
                     else -> {
                         rawValue
@@ -53,17 +55,17 @@ internal object Universal {
                 }
             }
             "batteryCapacity" -> {
-                calculatedValue
+                calculatedValue = rawValue / batteryCapacityOffset
             }
             "airTemp" -> {
                 calculatedValue = when {
                     rawValue < startAirTemperatureStart -> {
                         val offset = startAirTemperatureStart - rawValue // Get the offset by subtracting
-                        offset * airTempOffsetMultiplier // Apply our data to returned value
+                        offset * airTempOffset // Apply our data to returned value
                     }
                     rawValue > startAirTemperatureEnd -> {
                         val offset = rawValue - startAirTemperatureEnd // Get the offset by subtracting
-                        offset * airTempOffsetMultiplier // Apply our data to returned value
+                        offset * airTempOffset // Apply our data to returned value
                     }
                     else -> {
                         rawValue
