@@ -22,7 +22,7 @@ private const val startMileage = 88
 private const val riderWeightOffset = 2
 private const val batteryCapacityOffset = 15
 private const val airTempOffset = 1
-private const val batteryCyclesOffset = 2
+private const val batteryCyclesOffset = 100
 
 internal object Universal {
     fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
@@ -44,11 +44,13 @@ internal object Universal {
 
         calculatedValue -= calculateOffset("airTemp", airTemp) // Apply air temperature offset
 
+
+
         return calculatedValue
     }
 
     private fun calculateOffset(name: String, rawValue: Int): Int {
-        var calculatedValue: Int = 0
+        var calculatedValue = 0
         when (name) {
             "riderWeight" -> {
                 calculatedValue = when {
@@ -84,7 +86,7 @@ internal object Universal {
                 }
             }
             "batteryCycles" -> {
-
+                calculatedValue = rawValue / batteryCyclesOffset
             }
             "speed" -> {
 
