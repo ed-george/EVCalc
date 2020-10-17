@@ -1,6 +1,7 @@
 package org.dynamium.evcalc.core.internal.euc
 
 import java.lang.IllegalArgumentException
+import kotlin.math.pow
 
 /*
  * EVCalc Universal Calculation
@@ -54,12 +55,15 @@ internal object Universal {
 
         // Apply speed offset
         if (speed > startSpeed) {
-            calculatedValue /= calculateOffset("speed", speed)
+            val num = calculateOffset("speed", speed) * speedOffset
+            calculatedValue /= num
         } else if (speed < startSpeed) {
-            calculatedValue *= calculateOffset("speed", speed)
+            val num = calculateOffset("speed", speed) * speedOffset
+            calculatedValue *= num
         }
 
-        return calculatedValue
+
+        return calculatedValue.toDouble().pow(2.0).toInt() / 2
     }
 
     private fun calculateOffset(name: String, rawValue: Int): Int {

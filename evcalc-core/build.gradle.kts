@@ -5,7 +5,7 @@ plugins {
     id("maven-publish")
 }
 group = "org.dynamium.evcalc"
-version = "1.0-beta1"
+version = "1.0-beta1.1"
 
 repositories {
     mavenCentral()
