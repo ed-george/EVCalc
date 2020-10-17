@@ -27,16 +27,25 @@ private const val batteryCyclesOffset = 2
 internal object Universal {
     fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
         var calculatedValue = startMileage
-        val riderWeightOffset = calculateOffsets("riderWeight", riderWeight)
-        val airTempOffset = calculateOffsets("airTemp", airTemp)
+        val airTempOffset = calculateOffset("airTemp", airTemp)
+
+        // Apply weight offset
+        if (riderWeight < startRiderWeight) { // If weight is less that initial value
+            calculatedValue += calculateOffset("riderWeight", riderWeight) // Add offset to end value
+        } else if (riderWeight > startRiderWeight) { //
+            calculatedValue -= calculateOffset("riderWeight", riderWeight)
+        }
 
         if (batteryCapacity < startBatteryCapacity) { // Applying battery capacity offset
-            calculatedValue - calculateOffsets("batteryCapacity", batteryCapacity)
+            calculatedValue -= calculateOffset("batteryCapacity", batteryCapacity)
+        } else if (batteryCapacity > startBatteryCapacity) {
+            calculatedValue += calculateOffset("batteryCapacity", batteryCapacity)
         }
-        return 1
+
+        return calculatedValue
     }
 
-    private fun calculateOffsets(name: String, rawValue: Int): Int {
+    private fun calculateOffset(name: String, rawValue: Int): Int {
         var calculatedValue: Int = 0
         when (name) {
             "riderWeight" -> {
