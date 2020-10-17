@@ -16,6 +16,9 @@ private const val startAirTemperatureStart = 20
 private const val startAirTemperatureEnd = 30
 private const val startBatteryCycles = 100
 private const val startSpeed = 35
+private const val startMileage = 88
+
+private const val riderWeightOffsetValue = 2
 
 internal object Universal {
     fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
@@ -35,12 +38,18 @@ internal object Universal {
 
             }
             "airTemp" -> {
-                if (value < startAirTemperatureStart) {
-                    val offset = value - startAirTemperatureStart // Get the offset by subtracting
-                    calculatedValue = offset
-                } else if (value > startAirTemperatureEnd) {
-                    val offset = value - startAirTemperatureEnd
-                    calculatedValue = offset
+                calculatedValue = when {
+                    value < startAirTemperatureStart -> {
+                        val offset = value - startAirTemperatureStart // Get the offset by subtracting
+                        offset // Apply our data to returned value
+                    }
+                    value > startAirTemperatureEnd -> {
+                        val offset = value - startAirTemperatureEnd // Get the offset by subtracting
+                        offset // Apply our data to returned value
+                    }
+                    else -> {
+                        value
+                    }
                 }
             }
             "batteryCycles" -> {
@@ -49,7 +58,7 @@ internal object Universal {
             "speed" -> {
 
             }
-            else -> {
+            else -> { // If the name is unknown, throw an exception
                 throw IllegalArgumentException(
                     "Internal EVCalc Core exception: unknown name specified for calculating offsets." +
                             "Contact support to report this error, or go to https://github.com/Dynamium/EVCalc/issues to report this bug. " +

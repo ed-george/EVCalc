@@ -1,3 +1,3 @@
 
-rootProject.name = "core"
+rootProject.name = "engine"
 

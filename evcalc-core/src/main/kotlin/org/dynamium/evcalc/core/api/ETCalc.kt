@@ -4,16 +4,16 @@ package org.dynamium.evcalc.core.api
 /*
  * EVCalc Calculation Engine
  *
- * This file is the main file where all functions are located.
+ * This is the main API File.
  */
 object EVCalc {
-    object ES {
-        fun calculateMileage(weight: Int, batteryCapacity: Int, ) {
+    /*object ES {
+        fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int) {
 
         }
-    }
+    }*/
     object EUC {
-        fun calculateMileage(weight: Int, batteryCapacity: Int, ) {
+        fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int) {
 
         }
     }
