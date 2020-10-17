@@ -23,6 +23,7 @@ private const val riderWeightOffset = 2
 private const val batteryCapacityOffset = 15
 private const val airTempOffset = 1
 private const val batteryCyclesOffset = 100
+private const val speedOffset = 1
 
 internal object Universal {
     fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
@@ -44,10 +45,18 @@ internal object Universal {
 
         calculatedValue -= calculateOffset("airTemp", airTemp) // Apply air temperature offset
 
-        if (calculateOffset("batteryCapacity", batteryCapacity) == 0) {
+        // Apply battery cycles offset
+        if (calculateOffset("batteryCycles", batteryCycles) <= startBatteryCycles / 100) {
             calculatedValue += 2
         } else {
-            calculatedValue -= calculateOffset("batteryCapacity", batteryCapacity)
+            calculatedValue -= calculateOffset("batteryCycles", batteryCycles)
+        }
+
+        // Apply speed offset
+        if (speed > startSpeed) {
+            calculatedValue /= calculateOffset("speed", speed)
+        } else if (speed < startSpeed) {
+            calculatedValue *= calculateOffset("speed", speed)
         }
 
         return calculatedValue
@@ -72,7 +81,7 @@ internal object Universal {
                 }
             }
             "batteryCapacity" -> {
-                calculatedValue = rawValue / batteryCapacityOffset * 2
+                calculatedValue = rawValue / batteryCapacityOffset
             }
             "airTemp" -> {
                 calculatedValue = when {
@@ -93,7 +102,13 @@ internal object Universal {
                 calculatedValue = rawValue / batteryCyclesOffset * 2
             }
             "speed" -> {
-
+                var result = 0F
+                if (rawValue > startSpeed) {
+                    result = rawValue.toFloat() / startSpeed
+                } else if (rawValue < startSpeed) {
+                    result = startSpeed / rawValue.toFloat()
+                }
+                calculatedValue = result.toInt()
             }
             else -> { // If the name is unknown, throw an exception
                 throw IllegalArgumentException(
