@@ -5,7 +5,7 @@ plugins {
     id("maven-publish")
 }
 group = "org.dynamium.evcalc"
-version = "1.0-alpha1"
+version = "1.0-beta1"
 
 repositories {
     mavenCentral()
@@ -31,8 +31,15 @@ publishing {
 }
 
 dependencies {
-    testImplementation(kotlin("test-junit"))
+    testImplementation("io.kotest:kotest-runner-junit5:4.3.2") // for kotest framework
+    testImplementation("io.kotest:kotest-assertions-core:4.3.2") // for kotest core jvm assertions
+    testImplementation("io.kotest:kotest-property:4.3.2") // for kotest property test
 }
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "11"
 }

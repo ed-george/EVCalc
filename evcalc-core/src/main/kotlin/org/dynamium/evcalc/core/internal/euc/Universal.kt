@@ -18,10 +18,11 @@ private const val startBatteryCycles = 100
 private const val startSpeed = 35
 private const val startMileage = 88
 
+// Multipliers
 private const val riderWeightOffsetMultiplier = 2
 private const val batteryCapacityOffsetMultiplier = 15
 private const val airTempOffsetMultiplier = 1
-
+private const val batteryCyclesOffsetSubtractor = 2
 
 internal object Universal {
     fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
@@ -35,7 +36,19 @@ internal object Universal {
         var calculatedValue: Int = 0
         when (name) {
             "riderWeight" -> {
-
+                calculatedValue = when {
+                    value < startRiderWeight -> {
+                        val offset = value - startRiderWeight // Get the offset by subtracting
+                        offset * startRiderWeight // Apply our data to returned value
+                    }
+                    value > startRiderWeight -> {
+                        val offset = value - startAirTemperatureEnd // Get the offset by subtracting
+                        offset * airTempOffsetMultiplier // Apply our data to returned value
+                    }
+                    else -> {
+                        value
+                    }
+                }
             }
             "batteryCapacity" -> {
 
