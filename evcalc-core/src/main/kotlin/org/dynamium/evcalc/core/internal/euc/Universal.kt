@@ -11,7 +11,7 @@ import java.lang.IllegalArgumentException
 
 // Start constants
 private const val startRiderWeight = 75
-private const val startBatteryCapacity = 1554
+private const val startBatteryCapacity = 1555
 private const val startAirTemperatureStart = 20
 private const val startAirTemperatureEnd = 30
 private const val startBatteryCycles = 100
@@ -22,49 +22,51 @@ private const val startMileage = 88
 private const val riderWeightOffsetMultiplier = 2
 private const val batteryCapacityOffsetMultiplier = 15
 private const val airTempOffsetMultiplier = 1
-private const val batteryCyclesOffsetSubtractor = 2
+private const val batteryCyclesOffsetMultiplier = 2
 
 internal object Universal {
     fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
         val riderWeightOffset = calculateOffsets("riderWeight", riderWeight)
         val batteryCapacityOffset = calculateOffsets("batteryCapacity", batteryCapacity)
         val airTempOffset = calculateOffsets("airTemp", airTemp)
+
+
         return 1
     }
 
-    private fun calculateOffsets(name: String, value: Int): Int {
+    private fun calculateOffsets(name: String, rawValue: Int): Int {
         var calculatedValue: Int = 0
         when (name) {
             "riderWeight" -> {
                 calculatedValue = when {
-                    value < startRiderWeight -> {
-                        val offset = value - startRiderWeight // Get the offset by subtracting
+                    rawValue < startRiderWeight -> {
+                        val offset = startRiderWeight - rawValue // Get the offset by subtracting
                         offset * startRiderWeight // Apply our data to returned value
                     }
-                    value > startRiderWeight -> {
-                        val offset = value - startAirTemperatureEnd // Get the offset by subtracting
+                    rawValue > startRiderWeight -> {
+                        val offset = rawValue - startAirTemperatureEnd // Get the offset by subtracting
                         offset * airTempOffsetMultiplier // Apply our data to returned value
                     }
                     else -> {
-                        value
+                        rawValue
                     }
                 }
             }
             "batteryCapacity" -> {
-
+                calculatedValue
             }
             "airTemp" -> {
                 calculatedValue = when {
-                    value < startAirTemperatureStart -> {
-                        val offset = value - startAirTemperatureStart // Get the offset by subtracting
+                    rawValue < startAirTemperatureStart -> {
+                        val offset = startAirTemperatureStart - rawValue // Get the offset by subtracting
                         offset * airTempOffsetMultiplier // Apply our data to returned value
                     }
-                    value > startAirTemperatureEnd -> {
-                        val offset = value - startAirTemperatureEnd // Get the offset by subtracting
+                    rawValue > startAirTemperatureEnd -> {
+                        val offset = rawValue - startAirTemperatureEnd // Get the offset by subtracting
                         offset * airTempOffsetMultiplier // Apply our data to returned value
                     }
                     else -> {
-                        value
+                        rawValue
                     }
                 }
             }
@@ -84,4 +86,5 @@ internal object Universal {
         }
         return calculatedValue
     }
+
 }
