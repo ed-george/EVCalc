@@ -44,7 +44,11 @@ internal object Universal {
 
         calculatedValue -= calculateOffset("airTemp", airTemp) // Apply air temperature offset
 
-
+        if (calculateOffset("batteryCapacity", batteryCapacity) == 0) {
+            calculatedValue += 2
+        } else {
+            calculatedValue -= calculateOffset("batteryCapacity", batteryCapacity)
+        }
 
         return calculatedValue
     }
@@ -68,7 +72,7 @@ internal object Universal {
                 }
             }
             "batteryCapacity" -> {
-                calculatedValue = rawValue / batteryCapacityOffset
+                calculatedValue = rawValue / batteryCapacityOffset * 2
             }
             "airTemp" -> {
                 calculatedValue = when {
@@ -86,7 +90,7 @@ internal object Universal {
                 }
             }
             "batteryCycles" -> {
-                calculatedValue = rawValue / batteryCyclesOffset
+                calculatedValue = rawValue / batteryCyclesOffset * 2
             }
             "speed" -> {
 
