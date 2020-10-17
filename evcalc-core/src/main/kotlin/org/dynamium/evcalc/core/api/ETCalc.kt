@@ -1,12 +1,12 @@
-package org.dynamium.etcalc.core.api
+package org.dynamium.evcalc.core.api
 
 
 /*
- * ETCalc Calculation Engine
+ * EVCalc Calculation Engine
  *
  * This file is the main file where all functions are located.
  */
-object ETCalc {
+object EVCalc {
     object ES {
         fun calculateMileage(weight: Int, batteryCapacity: Int, ) {
 

@@ -1,0 +1,62 @@
+package org.dynamium.evcalc.core.internal.euc
+
+import java.lang.IllegalArgumentException
+
+/*
+ * EVCalc Universal Calculation
+ *
+ * This code calculates values that are universal for any unicycle.
+ * For any documentation about inner workings of the universal calculation visit Wiki on GitHub.
+ */
+
+// Start constants
+private const val startRiderWeight = 75
+private const val startBatteryCapacity = 1554
+private const val startAirTemperatureStart = 20
+private const val startAirTemperatureEnd = 30
+private const val startBatteryCycles = 100
+private const val startSpeed = 35
+
+internal object Universal {
+    fun calculateMileage(riderWeight: Int, batteryCapacity: Int, airTemp: Int, batteryCycles: Int, speed: Int): Int {
+        val riderWeightOffset = calculateOffsets("riderWeight", riderWeight)
+        val batteryCapacityOffset = calculateOffsets("batteryCapacity", batteryCapacity)
+        val airTempOffset = calculateOffsets("airTemp", airTemp)
+        return 1
+    }
+
+    private fun calculateOffsets(name: String, value: Int): Int {
+        var calculatedValue: Int = 0
+        when (name) {
+            "riderWeight" -> {
+
+            }
+            "batteryCapacity" -> {
+
+            }
+            "airTemp" -> {
+                if (value < startAirTemperatureStart) {
+                    val offset = value - startAirTemperatureStart // Get the offset by subtracting
+                    calculatedValue = offset
+                } else if (value > startAirTemperatureEnd) {
+                    val offset = value - startAirTemperatureEnd
+                    calculatedValue = offset
+                }
+            }
+            "batteryCycles" -> {
+
+            }
+            "speed" -> {
+
+            }
+            else -> {
+                throw IllegalArgumentException(
+                    "Internal EVCalc Core exception: unknown name specified for calculating offsets." +
+                            "Contact support to report this error, or go to https://github.com/Dynamium/EVCalc/issues to report this bug. " +
+                            "Please specify everything you done which triggered this exception."
+                )
+            }
+        }
+        return calculatedValue
+    }
+}
